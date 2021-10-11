@@ -1,0 +1,28 @@
+@* @using Shop.Data.Models *@
+@* @model IEnumerable<Car> *@
+@using Shop.Data.Models
+@model IEnumerable<Car>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>title</title>
+</head>
+<body>
+<h2>All cars</h2>
+<h2>@ViewBag.Category</h2>
+@{
+    foreach (var car in Model)
+    {
+        <div>
+            <h2>Model: @car.name</h2>
+            <p>Price: @car.price.ToString("C")</p>
+        </div>
+    }
+}
+</body>
+</html>
