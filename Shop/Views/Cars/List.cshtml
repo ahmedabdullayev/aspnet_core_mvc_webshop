@@ -1,18 +1,9 @@
 @* @using Shop.Data.Models *@
 @* @model IEnumerable<Car> *@
-@using Shop.ViewModels
-@model CarsListViewModel
-@{
-    Layout = null;
-}
+@* @using Shop.ViewModels *@
+@* @model CarsListViewModel *@
 
-<!DOCTYPE html>
 
-<html>
-<head>
-    <title>title</title>
-</head>
-<body>
 <h2>All cars</h2>
 @* <h2>@ViewBag.Category</h2> *@
 <h2>@Model.currCategory</h2>
@@ -25,5 +16,3 @@
         </div>
     }
 }
-</body>
-</html>
