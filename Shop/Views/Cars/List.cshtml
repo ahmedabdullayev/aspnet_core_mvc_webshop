@@ -1,7 +1,7 @@
 @* @using Shop.Data.Models *@
 @* @model IEnumerable<Car> *@
-@using Shop.Data.Models
-@model IEnumerable<Car>
+@using Shop.ViewModels
+@model CarsListViewModel
 @{
     Layout = null;
 }
@@ -14,9 +14,10 @@
 </head>
 <body>
 <h2>All cars</h2>
-<h2>@ViewBag.Category</h2>
+@* <h2>@ViewBag.Category</h2> *@
+<h2>@Model.currCategory</h2>
 @{
-    foreach (var car in Model)
+    foreach (var car in Model.allCars)
     {
         <div>
             <h2>Model: @car.name</h2>

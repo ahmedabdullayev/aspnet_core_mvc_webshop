@@ -17,12 +17,12 @@ namespace Shop.Controllers
 
         public ViewResult List()
         {
-            // CarsListViewModel obj = new CarsListViewModel();
-            // obj.allCars = _allCars.Cars;
-            // obj.currCategory = "Cars";
-            ViewBag.Category = "Some new";
-            var cars = _allCars.Cars;
-            return View(cars);
+            CarsListViewModel obj = new CarsListViewModel();
+            obj.allCars = _allCars.Cars;
+            obj.currCategory = "Cars";
+            // ViewBag.Category = "Some new";
+            // var cars = _allCars.Cars;
+            return View(obj);
         }
     }
 }
