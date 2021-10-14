@@ -1,0 +1,12 @@
+
+<div class="row mt-5 mb-2">
+    <div class="col">
+    <h1>Categories</h1>
+    @{
+        foreach (var cat in Model.Categories)
+        {
+            <p>@cat.categoryName</p>
+        }
+    }
+</div>
+</div>

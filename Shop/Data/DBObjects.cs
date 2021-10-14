@@ -1,19 +1,25 @@
 using System.Collections.Generic;
 using System.Linq;
-using Shop.Data.Interfaces;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
 using Shop.Data.Models;
 
-namespace Shop.Data.Mocks
+namespace Shop.Data
 {
-    public class MockCars : IAllCars
+    public class DBObjects
     {
-        private readonly ICarsCategory _categoryCars = new MockCategory();
-        public IEnumerable<Car> Cars
+        public static void Initial(AppDbContext context)
         {
-            get
+            
+
+            if (!context.Category.Any())
             {
-                return new List<Car>
-                {
+                context.Category.AddRange(Categories.Select(c => c.Value));
+            }
+
+            if (!context.Car.Any())
+            {
+                context.AddRange(
                     new Car() {
                         name = "Tesla", 
                         shortDesc = "", 
@@ -22,7 +28,7 @@ namespace Shop.Data.Mocks
                         price = 45000, 
                         isFavourite = true, 
                         available = true, 
-                        Category = _categoryCars.AllCategories.First()
+                        Category = Categories["Electric cars"]
                     },
                     new Car()
                     {
@@ -33,7 +39,7 @@ namespace Shop.Data.Mocks
                         price = 1000, 
                         isFavourite = true, 
                         available = true, 
-                        Category = _categoryCars.AllCategories.ElementAtOrDefault(1)
+                        Category = Categories["Classic cars"]
                     },
                     new Car()
                     {
@@ -44,7 +50,7 @@ namespace Shop.Data.Mocks
                         price = 1000, 
                         isFavourite = true, 
                         available = true, 
-                        Category = _categoryCars.AllCategories.ElementAtOrDefault(1)
+                        Category = Categories["Electric cars"]
                     },
                     new Car()
                     {
@@ -52,21 +58,39 @@ namespace Shop.Data.Mocks
                         shortDesc = "", 
                         longDesc = "", 
                         img = "/img/image.jpg", 
-                        price = 1000, 
+                        price = 0, 
                         isFavourite = true, 
                         available = true, 
-                        Category = _categoryCars.AllCategories.ElementAtOrDefault(0)
+                        Category = Categories["Classic cars"]
                     }
-                };
+                    );
             }
+
+            context.SaveChanges();
         }
 
-        public IEnumerable<Car> getFavCars { get; set; }
-        
-        public Car getObjectCar(int carId)
+        private static Dictionary<string, Category> category;
+        public static Dictionary<string, Category> Categories
         {
-            throw new System.NotImplementedException();
+            get
+            {
+                if (category == null)
+                {
+                    var list = new Category[]
+                    {
+                        new Category {categoryName = "Electric cars", desc = "Modern transport"},
+                        new Category {categoryName = "Classic cars", desc = "Cars with benzine engine"}
+                    };
+
+                    category = new Dictionary<string, Category>();
+                    foreach (Category el in list)
+                    {
+                        category.Add(el.categoryName, el);
+                    }
+                    
+                }
+                return category;
+            }
         }
-        
     }
 }
