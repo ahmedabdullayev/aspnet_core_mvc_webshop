@@ -28,7 +28,7 @@ namespace Shop.Data
                         price = 45000, 
                         isFavourite = true, 
                         available = true, 
-                        Category = Categories["Electric cars"]
+                        Category = Categories["electric"]
                     },
                     new Car()
                     {
@@ -39,7 +39,7 @@ namespace Shop.Data
                         price = 1000, 
                         isFavourite = true, 
                         available = true, 
-                        Category = Categories["Classic cars"]
+                        Category = Categories["classic"]
                     },
                     new Car()
                     {
@@ -50,7 +50,7 @@ namespace Shop.Data
                         price = 1000, 
                         isFavourite = true, 
                         available = true, 
-                        Category = Categories["Electric cars"]
+                        Category = Categories["electric"]
                     },
                     new Car()
                     {
@@ -61,7 +61,7 @@ namespace Shop.Data
                         price = 0, 
                         isFavourite = true, 
                         available = true, 
-                        Category = Categories["Classic cars"]
+                        Category = Categories["classic"]
                     }
                     );
             }
@@ -78,8 +78,8 @@ namespace Shop.Data
                 {
                     var list = new Category[]
                     {
-                        new Category {categoryName = "Electric cars", desc = "Modern transport"},
-                        new Category {categoryName = "Classic cars", desc = "Cars with benzine engine"}
+                        new Category {categoryName = "electric", desc = "Modern transport"},
+                        new Category {categoryName = "classic", desc = "Cars with benzine engine"}
                     };
 
                     category = new Dictionary<string, Category>();

@@ -27,26 +27,15 @@ namespace Shop.Controllers
             string _category = category;
             IEnumerable<Car> cars = null;
             string currCategory = "";
+            var allCategories = _allCategories.AllCategories;
             if (string.IsNullOrEmpty(category))
             {
                 cars = _allCars.Cars.OrderBy(i => i.id);
             }
             else
             {
-                if (string.Equals("electro", category, StringComparison.OrdinalIgnoreCase))
-                {
-                    cars = _allCars.Cars.Where(i => i.Category.categoryName.Equals("Electric cars")).OrderBy(i => i.id);
-                    currCategory = "Electric cars";
-
-                }
-                else if(string.Equals("fuel", category, StringComparison.OrdinalIgnoreCase))
-                {
-                    cars = _allCars.Cars.Where(i => i.Category.categoryName.Equals("Classic cars")).OrderBy(i => i.id);
-                    currCategory = "Classic cars";
-                }
-
-                
-                
+                cars = _allCars.Cars.Where(i => i.Category.categoryName.Equals(category)).OrderBy(i => i.id);
+                currCategory = category;
             }
 
             var carObj = new CarsListViewModel
