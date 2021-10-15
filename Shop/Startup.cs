@@ -40,6 +40,7 @@ namespace Shop
             
             services.AddTransient<IAllCars, CarRepository>(); // relationship
             services.AddTransient<ICarsCategory, CategoryRepository>(); // relationship
+            services.AddTransient<IAllOrders, OrdersRepository>(); // relationship интерфейс в котором классе исполняется
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>(); // to work with sessions
             services.AddScoped(sp => ShopCart.GetCart(sp)); // a lot of users to not use same carts

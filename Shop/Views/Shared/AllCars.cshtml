@@ -8,5 +8,5 @@
     <p>@Model.shortDesc</p>
     <p>Category: @Model.Category.categoryName</p>
     <p>Price: @Model.price.ToString("C")</p>
-    <p><a class="btn btn-warning" href="#">Read More..</a></p>
+    <p><a class="btn btn-warning" asp-controller="ShopCart" asp-action="addToCart" asp-route-id="@Model.id">Add to cart</a></p>
 </div>
